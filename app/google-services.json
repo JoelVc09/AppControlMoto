@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "119471614971",
+    "project_id": "apphuanta",
+    "storage_bucket": "apphuanta.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:119471614971:android:0ec2380122c19bc53cb95e",
+        "android_client_info": {
+          "package_name": "com.example.appcontrolmoto"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdKXnS66pfwNxEvYtJvlZfm-TgDoWScfg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
