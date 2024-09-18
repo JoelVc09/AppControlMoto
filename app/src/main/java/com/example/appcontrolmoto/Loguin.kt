@@ -52,6 +52,8 @@ class Loguin : AppCompatActivity() {
                     db.signInWithEmailAndPassword(correo, clave).addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             Toast.makeText(this, "Inicio Satisfactorio", Toast.LENGTH_LONG).show()
+                            val intent = Intent(this, Menu::class.java)
+                            startActivity(intent)
                         } else {
                             Toast.makeText(this, "Email o Password incorrecto", Toast.LENGTH_LONG).show()
                         }
