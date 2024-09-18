@@ -102,7 +102,7 @@ class SingUp : AppCompatActivity() {
                         Snackbar.LENGTH_LONG
                     ).show()
                 }
-                password.length !== passwordConfir.length -> {
+                password != passwordConfir -> {
                     Snackbar.make(
                         findViewById(android.R.id.content),
                         "Las contraseñas no coinciden",
@@ -134,6 +134,7 @@ class SingUp : AppCompatActivity() {
                                         txtEmail2.text.clear()
                                         txtCelular.text.clear()
                                         txtPassword.text.clear()
+                                        txtPasswordConfir.text.clear()
 
 
                                     }.addOnFailureListener { error ->
