@@ -31,6 +31,7 @@ class SingUp : AppCompatActivity() {
         val txtEmail2: EditText = findViewById(R.id.txtEmail2)
         val txtCelular: EditText = findViewById(R.id.txtCelular)
         val txtPassword: EditText = findViewById(R.id.txtpassword2)
+        val txtPasswordConfir: EditText = findViewById(R.id.txtPasswordConfir)
 
         val btnguardarRegistro: Button = findViewById(R.id.btnGuardarRegistro)
         val btnIniciar: Button = findViewById(R.id.btnIniciar)
@@ -54,6 +55,8 @@ class SingUp : AppCompatActivity() {
             val email = txtEmail2.text.toString().trim()
             val celular = txtCelular.text.toString().trim()
             val password = txtPassword.text.toString().trim()
+            val passwordConfir = txtPasswordConfir.text.toString().trim()
+
 
             // Verificar si algún campo está vacío y mostrar el mensaje adecuado
             when {
@@ -99,6 +102,15 @@ class SingUp : AppCompatActivity() {
                         Snackbar.LENGTH_LONG
                     ).show()
                 }
+                password.length !== passwordConfir.length -> {
+                    Snackbar.make(
+                        findViewById(android.R.id.content),
+                        "Las contraseñas no coinciden",
+                        Snackbar.LENGTH_LONG
+                    ).show()
+
+                }
+
                 else -> {
                     // Si todos los campos son válidos, proceder con la creación de usuario
                     auth.createUserWithEmailAndPassword(email, password)
