@@ -68,5 +68,6 @@ dependencies {
     // Google Play Services
     //implementation 'com.google.android.gms:play-services-auth:20.7.0' // Autenticación con Google
     implementation("com.google.android.gms:play-services-location:21.0.1") // Servicios de ubicación
+    implementation ("com.google.android.material:material:1.9.0") // Manejar colores de botón
 
 }
