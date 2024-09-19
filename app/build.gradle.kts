@@ -60,8 +60,13 @@ dependencies {
     implementation(libs.firebase.auth.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.play.services.location)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(platform("com.google.firebase:firebase-bom:33.2.0"))
+    // Google Play Services
+    //implementation 'com.google.android.gms:play-services-auth:20.7.0' // Autenticación con Google
+    implementation("com.google.android.gms:play-services-location:21.0.1") // Servicios de ubicación
+
 }

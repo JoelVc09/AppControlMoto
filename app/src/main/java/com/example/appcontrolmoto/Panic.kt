@@ -1,52 +1,157 @@
 package com.example.appcontrolmoto
 
+import android.Manifest
+import android.app.PendingIntent
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import android.os.Looper
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
+import com.example.appcontrolmoto.databinding.FragmentPanicBinding
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.Granularity
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationResult
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.Priority
+import android.location.Location
+import android.net.ConnectivityManager
+import android.net.Uri
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [Panic.newInstance] factory method to
- * create an instance of this fragment.
- */
 class Panic : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    private lateinit var binding: FragmentPanicBinding
+    private lateinit var fuseLocationClient: FusedLocationProviderClient
+    private lateinit var locationCallback: LocationCallback
+
+    // Manejador para la solicitud de permisos
+    private val requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { permissions ->
+        val allGranted = permissions.all { it.value }
+        if (allGranted) {
+            onPermisosConcedidos()
+        } else {
+            Toast.makeText(requireContext(), "Permisos denegados", Toast.LENGTH_SHORT).show()
         }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_panic, container, false)
+    ): View {
+        binding = FragmentPanicBinding.inflate(inflater, container, false)
+        verificarPermisos()
+        return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.btnEnviarUbi.setOnClickListener {
+            enviarUbicacionWhatsApp()
+        }
+    }
+
+    private fun verificarPermisos() {
+        val permisos = mutableListOf(
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        )
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            permisos.add(Manifest.permission.ACCESS_BACKGROUND_LOCATION)
+        }
+
+        val permisosArray = permisos.toTypedArray()
+
+        if (tienePermisos(permisosArray)) {
+            onPermisosConcedidos()
+        } else {
+            solicitarPermisos(permisosArray)
+        }
+    }
+
+    private fun tienePermisos(permisos: Array<String>): Boolean {
+        return permisos.all {
+            ContextCompat.checkSelfPermission(requireContext(), it) == PackageManager.PERMISSION_GRANTED
+        }
+    }
+
+    private fun onPermisosConcedidos() {
+        fuseLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
+        try {
+            fuseLocationClient.lastLocation.addOnSuccessListener {
+                if (it != null) {
+                    imprimirUbicacion(it)
+                } else {
+                    Toast.makeText(requireContext(), "No se puede obtener la ubicación", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            val locationRequest = LocationRequest.Builder(
+                Priority.PRIORITY_HIGH_ACCURACY,
+                30000
+            ).apply {
+                setGranularity(Granularity.GRANULARITY_PERMISSION_LEVEL)
+                setWaitForAccurateLocation(true)
+            }.build()
+
+            locationCallback = object : LocationCallback() {
+                override fun onLocationResult(p0: LocationResult) {
+                    super.onLocationResult(p0)
+                    for (location in p0.locations) {
+                        imprimirUbicacion(location)
+                    }
+                }
+            }
+
+            fuseLocationClient.requestLocationUpdates(
+                locationRequest,
+                locationCallback,
+                Looper.getMainLooper()
+            )
+        } catch (_: SecurityException) {
+            // Manejo de la excepción
+        }
+    }
+
+    private fun solicitarPermisos(permisos: Array<String>) {
+        requestPermissionLauncher.launch(permisos)
+    }
+
+    private fun imprimirUbicacion(ubicacion: Location) {
+        binding.tvLatitud.text = "${ubicacion.latitude}"
+        binding.tvLongitud.text = "${ubicacion.longitude}"
+        Log.d("GPS", "LAT: ${ubicacion.latitude} - LON: ${ubicacion.longitude}")
+    }
+
+    private fun enviarUbicacionWhatsApp() {
+        val numeroTelefono = "+51969456783"  // Reemplaza con tu número
+        val latitud = binding.tvLatitud.text.toString()
+        val longitud = binding.tvLongitud.text.toString()
+        val mensaje = "Mi ubicación es: Latitud: $latitud, Longitud: $longitud"
+        val url = "https://api.whatsapp.com/send?phone=$numeroTelefono&text=${Uri.encode(mensaje)}"
+
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(intent)
+    }
+
+
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Panic.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             Panic().apply {
