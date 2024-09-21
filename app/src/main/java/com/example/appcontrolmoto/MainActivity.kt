@@ -22,8 +22,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         val imgLogo: ImageView = findViewById(R.id.imgLogo)
+        val imglogos: ImageView = findViewById(R.id.imglogos)
 
         imgLogo.setOnClickListener {
+            val intent = Intent(this, Loguin::class.java)
+            startActivity(intent)
+        }
+
+        imglogos.setOnClickListener{
             val intent = Intent(this, Loguin::class.java)
             startActivity(intent)
         }

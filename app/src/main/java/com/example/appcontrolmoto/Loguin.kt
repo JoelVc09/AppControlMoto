@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -25,6 +26,8 @@ class Loguin : AppCompatActivity() {
 
         val txtEmail: EditText = findViewById(R.id.txtEmail)
         val txtPassword: EditText = findViewById(R.id.txtPassword)
+
+        val tvoldaste: TextView = findViewById(R.id.tvOlvidaste)
 
         val btnLogin: Button = findViewById(R.id.btnLogin)
         val btnRegistro: Button = findViewById(R.id.btnRegistro)
@@ -69,6 +72,11 @@ class Loguin : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //Dirigir a recuperar Password
 
+        tvoldaste.setOnClickListener{
+            val intent  = Intent(this, RecuperarPassword::class.java)
+            startActivity(intent)
+        }
     }
 }
