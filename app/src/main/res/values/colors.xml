@@ -3,9 +3,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="coloruno">#2B2B10</color>
-    <color name="colordos">#738860</color>
-    <color name="colortres">#F3D5A0</color>
-    <color name="colorcuatro">#F19760</color>
+    <color name="colorPrimary">#0EA22A</color>
+    <color name="colorAccent">#4F4F4F</color>
+    <color name="colorSurface">#E0E0E0</color>
+    <color name="colorBackground">#0B6A16</color>
+    <color name="colorSecondary">#4CAF50</color>
+
+    <color name="bottom_navigation_item_color">#FFEB3B</color> <!-- Color amarillo para íconos y texto -->
 
 </resources>

@@ -106,18 +106,21 @@
     <ImageView
         android:id="@+id/centerImage"
         android:layout_width="match_parent"
-        android:layout_height="463dp"
+        android:layout_height="437dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:src="@drawable/verificacion" />
 
     <Button
         android:id="@+id/btnEnviarUbi"
-        android:layout_width="329dp"
-        android:layout_height="68dp"
+        android:layout_width="283dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="15dp"
-        android:text="Enviar Ubicación" />
+        android:drawableBottom="@drawable/baseline_location_pin_24"
+        android:drawablePadding="20dp"
+        android:text="Enviar Ubicación"
+        android:textSize="20sp" />
 
 
 </LinearLayout>

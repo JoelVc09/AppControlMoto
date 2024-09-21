@@ -11,7 +11,7 @@
         android:id="@+id/imageView3"
         android:layout_width="635dp"
         android:layout_height="383dp"
-        android:layout_marginTop="-120dp"
+        android:layout_marginTop="-140dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,34 +21,41 @@
 
     <Button
         android:id="@+id/btnGuardarRegistro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/vlregistrar"
+        android:layout_width="259dp"
+        android:layout_height="53dp"
+        android:background="@drawable/butnsignup"
+        android:text="REGISTRARSE"
+        android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.84"
+        app:layout_constraintHorizontal_bias="0.598"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.934" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPasswordConfir"
+        app:layout_constraintVertical_bias="0.219" />
 
     <EditText
-        android:id="@+id/txtApellido"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Apellido"
+        android:id="@+id/txtNombre"
+        android:layout_width="289dp"
+        android:layout_height="50dp"
+        android:background="@drawable/custom_edittext_background"
+        android:drawableStart="@drawable/baseline_nombre"
+        android:drawablePadding="10dp"
+        android:hint="Nombre"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.557"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.514" />
+        app:layout_constraintVertical_bias="0.397" />
 
     <EditText
         android:id="@+id/txtCelular"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="289dp"
+        android:layout_height="50dp"
+        android:background="@drawable/custom_edittext_background"
+        android:drawableStart="@drawable/baseline_celular"
+        android:drawablePadding="10dp"
         android:ems="10"
         android:hint="Celular"
         android:inputType="text"
@@ -57,26 +64,30 @@
         app:layout_constraintHorizontal_bias="0.557"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.716" />
+        app:layout_constraintVertical_bias="0.684" />
 
-    <EditText
-        android:id="@+id/txtEmail2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="text"
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="155dp"
+        android:layout_height="45dp"
+        android:text="REGISTRO "
+        android:textAlignment="center"
+        android:textSize="27sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintHorizontal_bias="0.535"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.591" />
+        app:layout_constraintVertical_bias="0.316" />
 
     <EditText
         android:id="@+id/txtpassword2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="289dp"
+        android:layout_height="50dp"
+        android:background="@drawable/custom_edittext_background"
+        android:drawableStart="@drawable/baseline_password"
+        android:drawablePadding="10dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
@@ -85,51 +96,15 @@
         app:layout_constraintHorizontal_bias="0.557"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.753" />
-
-    <EditText
-        android:id="@+id/txtNombre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Nombre"
-        android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.557"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.434" />
-
-    <Button
-        android:id="@+id/btnIniciar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/vlsingin"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.169"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.934" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="155dp"
-        android:layout_height="45dp"
-        android:text="REGISTRO "
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.358" />
+        app:layout_constraintVertical_bias="0.698" />
 
     <EditText
         android:id="@+id/txtPasswordConfir"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="289dp"
+        android:layout_height="50dp"
+        android:background="@drawable/custom_edittext_background"
+        android:drawableStart="@drawable/baseline_password"
+        android:drawablePadding="10dp"
         android:ems="10"
         android:hint="Confirma Password"
         android:inputType="textPassword"
@@ -138,7 +113,55 @@
         app:layout_constraintHorizontal_bias="0.557"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.832" />
+        app:layout_constraintVertical_bias="0.772" />
+
+    <EditText
+        android:id="@+id/txtApellido"
+        android:layout_width="289dp"
+        android:layout_height="50dp"
+        android:background="@drawable/custom_edittext_background"
+        android:drawableStart="@drawable/baseline_nombre"
+        android:drawablePadding="10dp"
+        android:hint="Apellido"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.477" />
+
+    <EditText
+        android:id="@+id/txtEmail2"
+        android:layout_width="289dp"
+        android:layout_height="50dp"
+        android:background="@drawable/custom_edittext_background"
+        android:drawableStart="@drawable/email_24"
+        android:drawablePadding="14dp"
+        android:hint="Email"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.555" />
+
+    <Button
+        android:id="@+id/btnIniciar"
+        android:layout_width="259dp"
+        android:layout_height="53dp"
+        android:background="@drawable/custom_edittext_background"
+        android:text="@string/vlsingin"
+        android:textColor="@color/colorPrimary"
+        android:textColorLink="@color/colorSurface"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.598"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnGuardarRegistro"
+        app:layout_constraintVertical_bias="0.393" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

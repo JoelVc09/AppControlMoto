@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <!-- Estilo personalizado para BottomNavigationView -->
     <style name="CenteredBottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
         <item name="itemIconSize">24dp</item> <!-- Tamaño del ícono -->
@@ -11,8 +12,22 @@
     </style>
 
     <!-- Estilo para el texto del BottomNavigationView -->
-    <style name="CustomTextAppearance" parent="TextAppearance.AppCompat.Caption">
+    <style name="CustomTextAppearance" parent="TextAppearance.MaterialComponents.Caption">
         <item name="android:textSize">12sp</item> <!-- Tamaño del texto -->
         <item name="android:textColor">@android:color/black</item>
     </style>
+
+    <!-- Estilo personalizado para el texto -->
+    <style name="CustomTextStyle">
+        <item name="android:fontFamily">@font/black</item>
+        <item name="android:textSize">24sp</item>
+        <!-- Otros atributos de estilo si es necesario -->
+    </style>
+
+    <style name="CustomTextButtomStyle">
+        <item name="android:fontFamily">@font/bebasegular</item>
+        <item name="android:textSize">15sp</item>
+        <!-- Otros atributos de estilo si es necesario -->
+    </style>
+
 </resources>
