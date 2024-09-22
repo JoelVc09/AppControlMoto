@@ -1,10 +1,14 @@
 package com.example.appcontrolmoto
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.navigation.fragment.findNavController
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,8 +37,21 @@ class Home : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        // Inflar el layout para este fragmento
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
+
+        // Configurar el botón para navegar a LectorQr
+        val btnScanner: Button = view.findViewById(R.id.btnScaner)
+
+        // Agregar el log para verificar si el botón es null
+        Log.d("HomeFragment", "Button is null: ${btnScanner == null}")
+
+        btnScanner.setOnClickListener {
+            val intent = Intent(requireActivity(), LectorQr::class.java)
+            startActivity(intent)
+        }
+
+        return view
     }
 
     companion object {

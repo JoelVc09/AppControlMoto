@@ -72,5 +72,12 @@ dependencies {
     //Libreria para terminos y condicones
     implementation ("com.codesgood:justifiedtextview:1.1.0")
 
+    //librerias para qr
+
+    implementation ("com.journeyapps:zxing-android-embedded:4.3.0")
+    implementation ("com.google.zxing:core:3.4.1")// Biblioteca de ZXing core
+
+
+
 
 }

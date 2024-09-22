@@ -51,7 +51,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="wrap"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/btnScaner"
         app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintWidth_percent="0.8" />
 
@@ -71,7 +71,7 @@
         app:layout_constraintVertical_bias="0.45" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnScaner"
         android:layout_width="329dp"
         android:layout_height="68dp"
         android:layout_margin="15dp"
