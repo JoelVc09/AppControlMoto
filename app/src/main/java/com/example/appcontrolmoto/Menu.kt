@@ -23,7 +23,8 @@ class Menu : AppCompatActivity() {
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.home -> replaceFragment(Home())
-                R.id.panic -> replaceFragment(Panic())
+                R.id.Ubicacion -> replaceFragment(ubicacion())
+                R.id.Panics -> replaceFragment(Panic())
                 else -> {
 
                 }

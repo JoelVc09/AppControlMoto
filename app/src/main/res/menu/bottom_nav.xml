@@ -6,10 +6,10 @@
         android:icon="@drawable/ic_home_black_24dp"/>
     <item
         android:title="Panic"
-        android:id="@+id/panic"
-        android:icon="@drawable/baseline_crisis_alert_24"/>
+        android:id="@+id/Panics"
+        android:icon="@drawable/baseline_phone_forwarded_24"/>
     <item
-        android:title="Logout"
-        android:id="@+id/Logout"
-        android:icon="@drawable/baseline_exit_to_app_24"/>
+        android:title="Ubicación"
+        android:id="@+id/Ubicacion"
+        android:icon="@drawable/baseline_crisis_alert_24"/>
 </menu>
