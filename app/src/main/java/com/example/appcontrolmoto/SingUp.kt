@@ -165,6 +165,7 @@ class SingUp : AppCompatActivity() {
                                         txtCelular.text.clear()
                                         txtPassword.text.clear()
                                         txtPasswordConfir.text.clear()
+                                        checx.isChecked = false
 
 
                                     }.addOnFailureListener { error ->

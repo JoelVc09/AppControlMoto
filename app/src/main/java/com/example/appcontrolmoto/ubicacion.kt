@@ -141,7 +141,7 @@ class ubicacion : Fragment() {
         val numeroTelefono = "+51969456783"  // Reemplaza con tu número
         val latitud = binding.tvLatitud.text.toString()
         val longitud = binding.tvLongitud.text.toString()
-        val mensaje = "Mi ubicación es: Latitud: $latitud, Longitud: $longitud"
+        val mensaje = "Hola mi nombre es  y siento que estoy en peligro mi ubicación es: Latitud: $latitud, Longitud: $longitud"
         val url = "https://api.whatsapp.com/send?phone=$numeroTelefono&text=${Uri.encode(mensaje)}"
 
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
