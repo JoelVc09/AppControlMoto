@@ -2,6 +2,7 @@ package com.example.appcontrolmoto
 
 import android.content.Intent
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -54,9 +55,19 @@ class Loguin : AppCompatActivity() {
                     // Si ambos campos están completos, proceder con la autenticación
                     db.signInWithEmailAndPassword(correo, clave).addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
+
+                            // Guardar el email y contraseña en SharedPreferences
+                            val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+                            val editor = sharedPreferences.edit()
+                            editor.putString("email", correo)
+                            editor.putString("password", clave)
+                            editor.apply() // Guardar los datos de manera asincrónica
+
                             Toast.makeText(this, "Inicio Satisfactorio", Toast.LENGTH_LONG).show()
                             val intent = Intent(this, Menu::class.java)
                             startActivity(intent)
+
+
                         } else {
                             Toast.makeText(this, "Email o Password incorrecto", Toast.LENGTH_LONG).show()
                         }
@@ -78,5 +89,25 @@ class Loguin : AppCompatActivity() {
             val intent  = Intent(this, RecuperarPassword::class.java)
             startActivity(intent)
         }
+
+
     }
+
+    override fun onStart() {
+        super.onStart()
+
+        // Obtener SharedPreferences
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val savedEmail = sharedPreferences.getString("email", "")
+        val savedPassword = sharedPreferences.getString("password", "")
+
+        // Verificar si ya hay email y contraseña guardados
+        if (!savedEmail.isNullOrEmpty() && !savedPassword.isNullOrEmpty()) {
+            // Si ya hay una sesión activa, saltar el login y redirigir a Menu
+            Toast.makeText(this, "Bienvenido", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, Menu::class.java))
+            finish() // Termina la actividad de login
+        }
+    }
+
 }
