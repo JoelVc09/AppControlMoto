@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -24,15 +25,13 @@ class MainActivity : AppCompatActivity() {
         val imgLogo: ImageView = findViewById(R.id.imgLogo)
         val imglogos: ImageView = findViewById(R.id.imglogos)
 
-        imgLogo.setOnClickListener {
+        val inicioapp: LinearLayout = findViewById(R.id.inicioapp)
+
+        inicioapp.setOnClickListener {
             val intent = Intent(this, Loguin::class.java)
             startActivity(intent)
         }
 
-        imglogos.setOnClickListener{
-            val intent = Intent(this, Loguin::class.java)
-            startActivity(intent)
-        }
 
     }
 }

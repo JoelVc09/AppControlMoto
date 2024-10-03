@@ -6,51 +6,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondoinicio"
+    android:layout_gravity="center"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imgLogo"
-        android:layout_width="361dp"
-        android:layout_height="157dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:onClick="clickEnLogo"
+    <LinearLayout
+        android:id="@+id/inicioapp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.044"
-        app:srcCompat="@drawable/logohuantacity" />
+        app:layout_constraintVertical_bias="0.473">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="266dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:text="PERÚ - 2024 ©"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.956" />
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="256dp"
+            android:layout_height="105dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="70dp"
+            android:onClick="clickEnLogo"
+            app:srcCompat="@drawable/logohuantacity" />
 
-    <ImageView
-        android:id="@+id/imglogos"
-        android:layout_width="328dp"
-        android:layout_height="338dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgLogo"
-        app:layout_constraintVertical_bias="0.397"
-        app:srcCompat="@drawable/logomotocity" /> <!-- Añadir el atributo de clic -->
+        <ImageView
+            android:id="@+id/imglogos"
+            android:layout_width="328dp"
+            android:layout_height="338dp"
+            app:srcCompat="@drawable/logomotocity" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="266dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="30dp"
+            android:text="PERÚ - 2024 ©"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <!-- Añadir el atributo de clic -->
 
 
 
