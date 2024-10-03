@@ -10,7 +10,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,6 +29,11 @@ class Home : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    //Traer Nombre de usuario
+    private lateinit var tvUsuario: TextView
+    private lateinit var auth: FirebaseAuth
+    private lateinit var firestore: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +56,38 @@ class Home : Fragment() {
         // Agregar el log para verificar si el botón es null
         Log.d("HomeFragment", "Button is null: ${btnScanner == null}")
 
+        // Inicializar Firebase Auth y Firestore
+        auth = FirebaseAuth.getInstance()
+        firestore = FirebaseFirestore.getInstance()
+
+        // Inicializar el TextView
+        tvUsuario = view.findViewById(R.id.tvUsuario)
+
+        // Obtener el usuario actualmente autenticado
+        val user = auth.currentUser
+
+        user?.let {
+            val userEmail = user.email
+
+            // Hacer la consulta en Firestore usando el correo
+            firestore.collection("Usuarios")
+                .whereEqualTo("email", userEmail)
+                .get()
+                .addOnSuccessListener { documents ->
+                    for (document in documents) {
+                        val nombre = document.getString("nombre") // Asumiendo que el campo es "nombre"
+                        tvUsuario.text = nombre
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    // Manejo del error
+                    Log.e("FirestoreError", "Error al obtener el documento", exception)
+                }
+        }
+
+
+
+        // Direccionando a Scaner
         btnScanner.setOnClickListener {
             val intent = Intent(requireActivity(), LectorQr::class.java)
             startActivity(intent)
