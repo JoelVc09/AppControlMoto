@@ -59,7 +59,7 @@ class ubicacion : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnEnviarUbi.setOnClickListener {
+        binding.Enviarubicacionactual.setOnClickListener {
             enviarUbicacionWhatsApp()
         }
     }

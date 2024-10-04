@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Imagen de fondo -->
+    <item>
+        <bitmap
+            android:src="@drawable/fondoubicacion"
+        android:gravity="center" />
+    </item>
+
+    <!-- Capa de color con transparencia -->
+    <item>
+        <shape>
+            <solid android:color="#C00EA22A" /> <!-- Color con transparencia (#80 = 50% transparencia) -->
+        </shape>
+    </item>
+</layer-list>
