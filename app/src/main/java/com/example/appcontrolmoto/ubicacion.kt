@@ -1,6 +1,7 @@
 package com.example.appcontrolmoto
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
@@ -137,11 +138,21 @@ class ubicacion : Fragment() {
         Log.d("GPS", "LAT: ${ubicacion.latitude} - LON: ${ubicacion.longitude}")
     }
 
+
+
+
+
     private fun enviarUbicacionWhatsApp() {
+
+        //OBTENER EL NOMBRE DE HOME
+        val sharedPref = activity?.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val username = sharedPref?.getString("username", "Usuario Desconocido")
+
+
         val numeroTelefono = "+51969456783"  // Reemplaza con tu número
         val latitud = binding.tvLatitud.text.toString()
         val longitud = binding.tvLongitud.text.toString()
-        val mensaje = "Hola mi nombre es  y siento que estoy en peligro mi ubicación es: Latitud: $latitud, Longitud: $longitud"
+        val mensaje = "Hola mi nombre es $username y siento que estoy en peligro mi ubicación es: Latitud: $latitud, Longitud: $longitud"
         val url = "https://api.whatsapp.com/send?phone=$numeroTelefono&text=${Uri.encode(mensaje)}"
 
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))

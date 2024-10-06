@@ -1,5 +1,6 @@
 package com.example.appcontrolmoto
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -77,6 +78,12 @@ class Home : Fragment() {
                     for (document in documents) {
                         val nombre = document.getString("nombre") // Asumiendo que el campo es "nombre"
                         tvUsuario.text = nombre
+
+                        // Guardar nombre de usuario en SharedPreferences para utilizar en el mensaje
+                        val sharedPref = activity?.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+                        val editor = sharedPref?.edit()
+                        editor?.putString("username", tvUsuario.text.toString())
+                        editor?.apply()
                     }
                 }
                 .addOnFailureListener { exception ->
