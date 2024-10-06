@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
@@ -22,10 +23,8 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val imgLogo: ImageView = findViewById(R.id.imgLogo)
-        val imglogos: ImageView = findViewById(R.id.imglogos)
 
-        val inicioapp: LinearLayout = findViewById(R.id.inicioapp)
+        val inicioapp: ConstraintLayout = findViewById(R.id.main)
 
         inicioapp.setOnClickListener {
             val intent = Intent(this, Loguin::class.java)

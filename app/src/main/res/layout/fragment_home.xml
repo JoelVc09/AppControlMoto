@@ -5,17 +5,19 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondomenus"
     app:layoutDescription="@xml/fragment_home_scene"
     tools:context=".Home">
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="0dp"
         android:background="#0EA22A"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/guideline10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/padi"
@@ -28,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="70"
-            android:gravity="left"
+            android:gravity="left|center_vertical"
             android:orientation="vertical">
 
             <TextView
@@ -49,8 +51,6 @@
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="20sp" />
-
-
         </LinearLayout>
 
         <Button
@@ -66,34 +66,38 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="ÚSAME CON RESPONSABILIDAD"
+        android:textAppearance="@style/CustomTextAppearance"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.0" />
+
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/linearLayout5"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.609"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.936">
-
-        <TextView
-
-            android:id="@+id/textView13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ÚSAME CON RESPONSABILIDAD"
-            android:textAppearance="@style/CustomTextAppearance"
-            android:textColor="#000000"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/btnScaner"
-            android:layout_width="329dp"
-            android:layout_height="68dp"
-            android:layout_margin="15dp"
-            android:layout_marginTop="44dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:drawableEnd="@drawable/qr_code_scanner_24"
             android:text="Escaner QR"
             android:textSize="20sp"
@@ -101,10 +105,9 @@
 
         <Button
             android:id="@+id/button1"
-            android:layout_width="329dp"
-            android:layout_height="68dp"
-            android:layout_margin="15dp"
-            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:drawableEnd="@drawable/baseline_message_24"
             android:text="Alerta de peligro"
             android:textSize="20sp"
@@ -112,10 +115,9 @@
 
         <Button
             android:id="@+id/button3"
-            android:layout_width="329dp"
-            android:layout_height="68dp"
-            android:layout_margin="15dp"
-            android:layout_marginTop="90dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:drawableRight="@drawable/campaign_24"
             android:text="Precaución"
             android:textSize="20sp"
@@ -123,13 +125,29 @@
 
         <Button
             android:id="@+id/button4"
-            android:layout_width="329dp"
-            android:layout_height="68dp"
-            android:layout_margin="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:drawableRight="@drawable/baseline_inciden"
-            android:text="Insidencias"
+            android:text="Incidencias"
             android:textSize="20sp"
             app:layout_constraintWidth_percent="0.8" />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@drawable/fondomenu"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.08" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

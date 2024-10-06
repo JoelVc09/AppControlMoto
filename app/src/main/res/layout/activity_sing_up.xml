@@ -3,46 +3,61 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:background="#FFFFFF"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondoregistroo"
     tools:context=".SingUp">
 
 
+    <!-- TextView para título de Registro -->
+
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/fondoregistro"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="REGISTRO"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@+id/guideline8"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="#FFFFFF"
-        android:gravity="center_horizontal"
+        android:gravity="bottom|center_horizontal"
         android:orientation="vertical"
-        android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guideline11"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
 
-        <!-- TextView para título de Registro -->
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="10dp"
-            android:text="REGISTRO"
-            android:textAlignment="center"
-            android:textColor="@color/colorPrimary"
-            android:textSize="28sp"
-            android:textStyle="bold" />
 
         <!-- Campos de entrada EditText -->
         <EditText
             android:id="@+id/txtNombre"
             android:layout_width="289dp"
             android:layout_height="50dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/custom_edittext_background"
             android:drawableStart="@drawable/baseline_nombre"
             android:drawablePadding="10dp"
@@ -53,7 +68,7 @@
             android:id="@+id/txtApellido"
             android:layout_width="289dp"
             android:layout_height="50dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/custom_edittext_background"
             android:drawableStart="@drawable/baseline_nombre"
             android:drawablePadding="10dp"
@@ -64,7 +79,7 @@
             android:id="@+id/txtEmail2"
             android:layout_width="289dp"
             android:layout_height="50dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/custom_edittext_background"
             android:drawableStart="@drawable/email_24"
             android:drawablePadding="14dp"
@@ -75,7 +90,7 @@
             android:id="@+id/txtCelular"
             android:layout_width="289dp"
             android:layout_height="50dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/custom_edittext_background"
             android:drawableStart="@drawable/baseline_celular"
             android:drawablePadding="10dp"
@@ -87,7 +102,7 @@
             android:id="@+id/txtpassword2"
             android:layout_width="289dp"
             android:layout_height="50dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/custom_edittext_background"
             android:drawableStart="@drawable/baseline_password"
             android:drawablePadding="10dp"
@@ -98,7 +113,7 @@
             android:id="@+id/txtPasswordConfir"
             android:layout_width="289dp"
             android:layout_height="50dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/custom_edittext_background"
             android:drawableStart="@drawable/baseline_password"
             android:drawablePadding="10dp"
@@ -108,11 +123,10 @@
         <!-- Términos y condiciones -->
         <LinearLayout
             android:id="@+id/linearLayout2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-25dp"
-            android:layout_marginBottom="20dp"
-            android:gravity="center"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="8dp"
             android:orientation="horizontal">
 
             <CheckBox
@@ -133,9 +147,9 @@
 
             <TextView
                 android:id="@+id/tvterminosycondiciones"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="5dp"
                 android:text="@string/vaterminosycondiciones"
                 android:textColor="@color/design_default_color_primary_variant"
                 android:textSize="12sp" />
@@ -146,7 +160,7 @@
             android:id="@+id/buttons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-25dp"
+            android:layout_marginTop="0dp"
             android:layout_marginBottom="0dp"
             android:gravity="center_horizontal"
             android:orientation="vertical">
@@ -172,5 +186,17 @@
 
     </LinearLayout>
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.20"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.98"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
