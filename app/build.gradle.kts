@@ -61,6 +61,7 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.play.services.location)
+    implementation(libs.firebase.storage.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -76,6 +77,16 @@ dependencies {
 
     implementation ("com.journeyapps:zxing-android-embedded:4.3.0")
     implementation ("com.google.zxing:core:3.4.1")// Biblioteca de ZXing core
+
+    //Traer iamgen de storage
+
+    implementation ("com.firebaseui:firebase-ui-storage:8.0.0")
+
+    implementation ("com.google.android.gms:play-services-base:18.0.1")
+    implementation ("com.google.firebase:firebase-core:21.1.1")
+
+    implementation ("com.squareup.picasso:picasso:2.8")
+
 
 
 

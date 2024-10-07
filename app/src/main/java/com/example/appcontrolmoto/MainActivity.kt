@@ -6,7 +6,9 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
@@ -27,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         val inicioapp: ConstraintLayout = findViewById(R.id.main)
 
         inicioapp.setOnClickListener {
+
             val intent = Intent(this, Loguin::class.java)
             startActivity(intent)
         }

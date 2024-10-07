@@ -4,7 +4,6 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
@@ -26,7 +25,6 @@ import com.google.android.gms.location.Priority
 import android.location.Location
 import android.net.Uri
 
-
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
@@ -36,15 +34,14 @@ class ubicacion : Fragment() {
     private lateinit var fuseLocationClient: FusedLocationProviderClient
     private lateinit var locationCallback: LocationCallback
 
-    // Manejador para la solicitud de permisos
+    // Manejador para la solicitud de permisos (solo ACCESS_FINE_LOCATION)
     private val requestPermissionLauncher = registerForActivityResult(
-        ActivityResultContracts.RequestMultiplePermissions()
-    ) { permissions ->
-        val allGranted = permissions.all { it.value }
-        if (allGranted) {
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted: Boolean ->
+        if (isGranted) {
             onPermisosConcedidos()
         } else {
-            Toast.makeText(requireContext(), "Permisos denegados", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Permiso de ubicación denegado", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -66,27 +63,12 @@ class ubicacion : Fragment() {
     }
 
     private fun verificarPermisos() {
-        val permisos = mutableListOf(
-            Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.ACCESS_COARSE_LOCATION
-        )
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            permisos.add(Manifest.permission.ACCESS_BACKGROUND_LOCATION)
-        }
-
-        val permisosArray = permisos.toTypedArray()
-
-        if (tienePermisos(permisosArray)) {
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            // Ya tienes el permiso, puedes acceder a la ubicación
             onPermisosConcedidos()
         } else {
-            solicitarPermisos(permisosArray)
-        }
-    }
-
-    private fun tienePermisos(permisos: Array<String>): Boolean {
-        return permisos.all {
-            ContextCompat.checkSelfPermission(requireContext(), it) == PackageManager.PERMISSION_GRANTED
+            // Solicitar el permiso
+            solicitarPermisos()
         }
     }
 
@@ -128,8 +110,8 @@ class ubicacion : Fragment() {
         }
     }
 
-    private fun solicitarPermisos(permisos: Array<String>) {
-        requestPermissionLauncher.launch(permisos)
+    private fun solicitarPermisos() {
+        requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
     }
 
     private fun imprimirUbicacion(ubicacion: Location) {
@@ -138,16 +120,10 @@ class ubicacion : Fragment() {
         Log.d("GPS", "LAT: ${ubicacion.latitude} - LON: ${ubicacion.longitude}")
     }
 
-
-
-
-
     private fun enviarUbicacionWhatsApp() {
-
-        //OBTENER EL NOMBRE DE HOME
+        // OBTENER EL NOMBRE DE HOME
         val sharedPref = activity?.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val username = sharedPref?.getString("username", "Usuario Desconocido")
-
 
         val numeroTelefono = "+51969456783"  // Reemplaza con tu número
         val latitud = binding.tvLatitud.text.toString()
@@ -158,7 +134,6 @@ class ubicacion : Fragment() {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
         startActivity(intent)
     }
-
 
     companion object {
         @JvmStatic

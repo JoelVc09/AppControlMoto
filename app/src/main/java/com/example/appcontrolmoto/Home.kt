@@ -67,6 +67,15 @@ class Home : Fragment() {
         // Obtener el usuario actualmente autenticado
         val user = auth.currentUser
 
+        // Encuentra el botón por su ID
+
+        val btnAlert: Button = view.findViewById(R.id.btnAlert)
+
+        btnAlert.setOnClickListener {
+            val intent = Intent(requireActivity(), InformacionConductor::class.java)
+            startActivity(intent)
+        }
+
         user?.let {
             val userEmail = user.email
 
