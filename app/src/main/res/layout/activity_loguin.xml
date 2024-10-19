@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondologuin"
+    android:background="@color/white"
     tools:context=".Loguin">
 
 
@@ -18,14 +18,15 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline16">
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="137dp"
-            android:layout_height="150dp"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
             android:layout_marginBottom="12dp"
-            android:src="@drawable/baseline_people_24" />
+            android:src="@drawable/logooriginal" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -83,8 +84,7 @@
                 android:layout_width="302dp"
                 android:layout_height="60dp"
                 android:layout_marginBottom="12dp"
-                android:background="@drawable/custom_edittext_background"
-                android:backgroundTint="@null"
+                android:background="@drawable/buttonsegundo"
                 android:text="REGISTRARME AHORA"
                 android:textColor="@color/colorPrimary" />
         </LinearLayout>
@@ -97,5 +97,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.95"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
