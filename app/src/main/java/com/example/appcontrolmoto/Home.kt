@@ -64,8 +64,9 @@ class Home : Fragment() {
         // Inicializar el TextView
         tvUsuario = view.findViewById(R.id.tvUsuario)
 
-        // Obtener el usuario actualmente autenticado
-        val user = auth.currentUser
+        // Recuperar el email y contraseña de SharedPreferences
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        val emailGuardado = sharedPreferences.getString("email", null)
 
         // Encuentra el botón por su ID
 
@@ -76,12 +77,11 @@ class Home : Fragment() {
             startActivity(intent)
         }
 
-        user?.let {
-            val userEmail = user.email
-
-            // Hacer la consulta en Firestore usando el correo
+        // ASIGNAR EL NOMBRE DEL USUARIO
+        emailGuardado?.let { email -> // Verificar que el correo no sea null
+            // Hacer la consulta en Firestore usando el correo guardado
             firestore.collection("Usuarios")
-                .whereEqualTo("email", userEmail)
+                .whereEqualTo("email", email) // Utiliza el correo guardado en SharedPreferences
                 .get()
                 .addOnSuccessListener { documents ->
                     for (document in documents) {
@@ -100,7 +100,6 @@ class Home : Fragment() {
                     Log.e("FirestoreError", "Error al obtener el documento", exception)
                 }
         }
-
 
 
         // Direccionando a Scaner

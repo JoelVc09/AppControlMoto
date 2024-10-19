@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -148,16 +149,11 @@ class SingUp : AppCompatActivity() {
                             if (task.isSuccessful) {
                                 val user: FirebaseUser? = auth.currentUser
                                 val uid = user?.uid
-                                //sendEmailVerification()
+                                sendEmailVerification()
                                 val userModel = UserModel(nombre, apellido, celular, email, uid)
                                 collectionRef.add(userModel)
                                     .addOnCompleteListener {
-                                        Snackbar.make(
-                                            findViewById(android.R.id.content),
-                                            "Registro exitoso",
-                                            Snackbar.LENGTH_LONG
-                                        ).show()
-
+                                        Toast.makeText(this, "Registro exitoso, Verificar la cuenta.", Toast.LENGTH_LONG).show()
                                         // Limpiar los campos
                                         txtNombre.text.clear()
                                         txtApellido.text.clear()
@@ -167,6 +163,8 @@ class SingUp : AppCompatActivity() {
                                         txtPasswordConfir.text.clear()
                                         checx.isChecked = false
 
+                                        val intent = Intent(this, Loguin::class.java)
+                                        startActivity(intent)
 
                                     }.addOnFailureListener { error ->
                                         Snackbar.make(
@@ -191,6 +189,22 @@ class SingUp : AppCompatActivity() {
                             ).show()
                         }
                 }
+            }
+        }
+    }
+
+    val auth = FirebaseAuth.getInstance()
+
+    private fun sendEmailVerification() {
+        val user = auth.currentUser!!
+        user.sendEmailVerification().addOnCompleteListener(this) { task ->
+            if (task.isSuccessful) {
+            } else {
+                Snackbar.make(
+                    findViewById(android.R.id.content),
+                    "Error en enviar correo",
+                    Snackbar.LENGTH_LONG
+                ).show()
             }
         }
     }

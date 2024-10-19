@@ -43,29 +43,37 @@ class Loguin : AppCompatActivity() {
             // Verificar si los campos están vacíos y mostrar el mensaje adecuado
             when {
                 correo.isEmpty() && clave.isEmpty() -> {
-                    Toast.makeText(this, "Por favor ingresa los datos", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Por favor ingrese los datos", Toast.LENGTH_LONG).show()
                 }
                 correo.isEmpty() -> {
-                    Toast.makeText(this, "Por favor ingresa tu correo", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Por favor ingrese su correo", Toast.LENGTH_LONG).show()
                 }
                 clave.isEmpty() -> {
-                    Toast.makeText(this, "Por favor ingresa tu contraseña", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Por favor ingrese su contraseña", Toast.LENGTH_LONG).show()
                 }
                 else -> {
                     // Si ambos campos están completos, proceder con la autenticación
                     db.signInWithEmailAndPassword(correo, clave).addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
+                            val user = db.currentUser
+                            val verifica = user?.isEmailVerified
+                            if (verifica == true){
+                                // Guardar el email y contraseña en SharedPreferences
+                                val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+                                val editor = sharedPreferences.edit()
+                                editor.putString("email", correo)
+                                editor.putString("password", clave)
+                                editor.apply() // Guardar los datos de manera asincrónica
 
-                            // Guardar el email y contraseña en SharedPreferences
-                            val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-                            val editor = sharedPreferences.edit()
-                            editor.putString("email", correo)
-                            editor.putString("password", clave)
-                            editor.apply() // Guardar los datos de manera asincrónica
+                                Toast.makeText(this, "Inicio Satisfactorio", Toast.LENGTH_LONG).show()
+                                val intent = Intent(this, Menu::class.java)
+                                startActivity(intent)
 
-                            Toast.makeText(this, "Inicio Satisfactorio", Toast.LENGTH_LONG).show()
-                            val intent = Intent(this, Menu::class.java)
-                            startActivity(intent)
+                            }
+                            else {
+                                Toast.makeText(this, "Correo no verificado, revisar bandeja de entrada", Toast.LENGTH_LONG).show()
+                            }
+
 
 
                         } else {

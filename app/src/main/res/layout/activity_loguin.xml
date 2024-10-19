@@ -43,7 +43,6 @@
                 android:ems="10"
                 android:hint="Ingresar Email"
                 android:inputType="text"
-                android:text="test@gmail.com"
                 app:hintTextColor="#B2DFDB" />
 
             <EditText
@@ -55,8 +54,7 @@
                 android:drawableEnd="@drawable/lock_24"
                 android:ems="10"
                 android:hint="Password"
-                android:inputType="textPassword"
-                android:text="123456" />
+                android:inputType="textPassword" />
 
             <TextView
                 android:id="@+id/tvOlvidaste"
