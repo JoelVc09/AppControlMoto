@@ -45,7 +45,7 @@ class SingUp : AppCompatActivity() {
         val db = FirebaseFirestore.getInstance()
         val auth = FirebaseAuth.getInstance()
         val collectionRef = db.collection("Usuarios")
-
+        
         // DIrigira terminos y condiciones
 
         txtterminos.setOnClickListener {
@@ -148,7 +148,7 @@ class SingUp : AppCompatActivity() {
                             if (task.isSuccessful) {
                                 val user: FirebaseUser? = auth.currentUser
                                 val uid = user?.uid
-
+                                //sendEmailVerification()
                                 val userModel = UserModel(nombre, apellido, celular, email, uid)
                                 collectionRef.add(userModel)
                                     .addOnCompleteListener {
