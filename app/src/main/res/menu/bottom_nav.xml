@@ -3,13 +3,16 @@
     <item
         android:title="Home"
         android:id="@+id/home"
+        android:iconTint="@color/title"
         android:icon="@drawable/ic_home_black_24dp"/>
     <item
         android:title="Panic"
         android:id="@+id/Panics"
-        android:icon="@drawable/baseline_phone_forwarded_24"/>
+        android:iconTint="@color/title"
+        android:icon="@drawable/baseline_crisis_alert_24"/>
     <item
         android:title="Ubicación"
         android:id="@+id/Ubicacion"
-        android:icon="@drawable/baseline_crisis_alert_24"/>
+        android:iconTint="@color/title"
+        android:icon="@drawable/baseline_my_location_24"/>
 </menu>

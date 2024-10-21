@@ -41,8 +41,10 @@
                 android:layout_marginBottom="12dp"
                 android:background="@drawable/custom_edittext_background"
                 android:drawableEnd="@drawable/email_24"
+                android:textColor="@color/black"
                 android:ems="10"
-                android:hint="Ingresar Email"
+                android:hint="Ingresar Correo"
+                android:textColorHint="@color/hint"
                 android:inputType="text"
                 app:hintTextColor="#B2DFDB" />
 
@@ -51,6 +53,8 @@
                 android:layout_width="302dp"
                 android:layout_height="60dp"
                 android:layout_marginBottom="12dp"
+                android:textColorHint="@color/hint"
+                android:textColor="@color/black"
                 android:background="@drawable/custom_edittext_background"
                 android:drawableEnd="@drawable/lock_24"
                 android:ems="10"

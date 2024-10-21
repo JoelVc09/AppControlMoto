@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/white"
     tools:context=".InformacionConductor">
 
 
@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="160dp"
         android:text="JUAN PEREZ CARDOMA LUNA"
+        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -229,6 +230,7 @@
         android:layout_width="418dp"
         android:layout_height="66dp"
         android:text="Volver"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline13"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
