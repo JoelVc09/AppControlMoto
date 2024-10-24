@@ -1,5 +1,6 @@
 package com.example.appcontrolmoto
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -109,21 +110,32 @@ class Home : Fragment() {
         }
 
         val btnLogout: Button = view.findViewById(R.id.btnLogout)
-        // Acción para el botón de cerrar sesión
+
+// Acción para el botón de cerrar sesión
         btnLogout.setOnClickListener {
-            // Eliminar las preferencias de "email" y "password"
-            val sharedPreferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
-            val editor = sharedPreferences.edit()
-            editor.remove("email")    // Eliminar el correo
-            editor.remove("password") // Eliminar la contraseña
-            editor.apply() // Aplica los cambios
+            // Crear un diálogo de confirmación
+            AlertDialog.Builder(requireContext())
+                .setTitle("Confirmar Cierre de Sesión")
+                .setMessage("¿Estás seguro de que quieres cerrar sesión?")
+                .setPositiveButton("Sí") { _, _ ->
+                    // Código para cerrar sesión
+                    val sharedPreferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
+                    val editor = sharedPreferences.edit()
+                    editor.remove("email")    // Eliminar el correo
+                    editor.remove("password") // Eliminar la contraseña
+                    editor.apply() // Aplica los cambios
 
-            // Redirigir a la actividad de Loguin
-            val intent = Intent(requireActivity(), Loguin::class.java)
-            startActivity(intent)
+                    // Redirigir a la actividad de Login
+                    val intent = Intent(requireActivity(), Loguin::class.java)
+                    startActivity(intent)
 
-            // Finalizar la actividad actual si no quieres volver a ella
-            requireActivity().finish()
+                    // Finalizar la actividad actual si no quieres volver a ella
+                    requireActivity().finish()
+                }
+                .setNegativeButton("No") { dialog, _ ->
+                    dialog.dismiss() // Cerrar el diálogo si se elige "No"
+                }
+                .show() // Mostrar el diálogo
         }
 
         return view
