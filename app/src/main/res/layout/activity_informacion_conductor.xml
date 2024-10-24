@@ -34,7 +34,6 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
     <LinearLayout
-        android:id="@+id/linearLayout7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -44,7 +43,6 @@
         app:layout_constraintTop_toBottomOf="@+id/txtName">
 
         <LinearLayout
-            android:id="@+id/linearLayout6"
             android:layout_width="216dp"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal|left"
@@ -52,7 +50,6 @@
 
             <!-- Nombre -->
             <TextView
-                android:id="@+id/textView12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -67,7 +64,6 @@
 
             <!-- Dirección -->
             <TextView
-                android:id="@+id/textView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -82,7 +78,6 @@
 
             <!-- Teléfono -->
             <TextView
-                android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -97,7 +92,6 @@
 
             <!-- Correo electrónico -->
             <TextView
-                android:id="@+id/textView9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -112,7 +106,6 @@
 
             <!-- Fecha de nacimiento -->
             <TextView
-                android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"

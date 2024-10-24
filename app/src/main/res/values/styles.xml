@@ -2,14 +2,6 @@
 <resources>
 
     <!-- Estilo personalizado para BottomNavigationView -->
-    <style name="CenteredBottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
-        <item name="itemIconSize">24dp</item> <!-- Tamaño del ícono -->
-        <item name="itemTextAppearanceActive">@style/CustomTextAppearance</item>
-        <item name="itemTextAppearanceInactive">@style/CustomTextAppearance</item>
-        <item name="itemPaddingTop">4dp</item> <!-- Padding superior del ícono -->
-        <item name="itemPaddingBottom">4dp</item> <!-- Padding inferior del ícono -->
-        <item name="itemHorizontalTranslationEnabled">false</item> <!-- Deshabilitar animación horizontal -->
-    </style>
 
     <!-- Estilo para el texto del BottomNavigationView -->
     <style name="CustomTextAppearance" parent="TextAppearance.MaterialComponents.Caption">
@@ -18,16 +10,5 @@
     </style>
 
     <!-- Estilo personalizado para el texto -->
-    <style name="CustomTextStyle">
-        <item name="android:fontFamily">@font/black</item>
-        <item name="android:textSize">24sp</item>
-        <!-- Otros atributos de estilo si es necesario -->
-    </style>
-
-    <style name="CustomTextButtomStyle">
-        <item name="android:fontFamily">@font/bebasegular</item>
-        <item name="android:textSize">15sp</item>
-        <!-- Otros atributos de estilo si es necesario -->
-    </style>
 
 </resources>

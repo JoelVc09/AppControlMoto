@@ -12,8 +12,7 @@
     <color name="colorAccent">#4F4F4F</color>
     <color name="colorSurface">#E0E0E0</color>
     <color name="colorBackground">#0B6A16</color>
-    <color name="colorSecondary">#017D54</color>
 
-    <color name="bottom_navigation_item_color">#FFEB3B</color> <!-- Color amarillo para íconos y texto -->
+    <!-- Color amarillo para íconos y texto -->
 
 </resources>

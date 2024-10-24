@@ -13,7 +13,6 @@
 
 
     <ImageView
-        android:id="@+id/imageView5"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
@@ -135,7 +134,6 @@
 
         <!-- Términos y condiciones -->
         <LinearLayout
-            android:id="@+id/linearLayout2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
@@ -162,7 +160,6 @@
 
         <!-- Botones para registrarse y iniciar sesión -->
         <LinearLayout
-            android:id="@+id/buttons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"

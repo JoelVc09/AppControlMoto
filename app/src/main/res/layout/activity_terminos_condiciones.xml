@@ -19,7 +19,6 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/titulouno"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="POLÍTICA DE PRIVACIDAD APLICACIÓN APPMOTO"
@@ -28,7 +27,6 @@
                 android:textStyle="bold" />
 
             <com.codesgood.views.JustifiedTextView
-                android:id="@+id/parradoUno"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -39,7 +37,6 @@
                 android:textSize="17sp" />
 
             <TextView
-                android:id="@+id/titulodos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="INFORMACIÓN QUE ES RECOLECTADA"
@@ -48,7 +45,6 @@
                 android:textStyle="bold" />
 
             <com.codesgood.views.JustifiedTextView
-                android:id="@+id/parradodos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -59,7 +55,6 @@
                 android:textSize="17sp" />
 
             <TextView
-                android:id="@+id/titulotres"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="USO DE LA INFORMACIÓN RECOLECTADA"
@@ -68,7 +63,6 @@
                 android:textStyle="bold" />
 
             <com.codesgood.views.JustifiedTextView
-                android:id="@+id/parradotres"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -79,7 +73,6 @@
                 android:textSize="17sp" />
 
             <TextView
-                android:id="@+id/titulocuatro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="ENLACES A TERCEROS"
@@ -88,7 +81,6 @@
                 android:textStyle="bold" />
 
             <com.codesgood.views.JustifiedTextView
-                android:id="@+id/parradoCuatro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"

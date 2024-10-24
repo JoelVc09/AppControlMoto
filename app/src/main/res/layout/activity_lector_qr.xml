@@ -9,7 +9,6 @@
     tools:context=".LectorQr">
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/layout_result"
         android:orientation="vertical"
         android:layout_gravity="center"
         android:gravity="center"
