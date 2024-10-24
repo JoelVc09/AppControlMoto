@@ -73,61 +73,59 @@ class SingUp : AppCompatActivity() {
 
             val celularPattern = Regex("^[0-9]{9}\$")
 
+            val namePattern = Regex("^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$") // Patrón que permite solo letras y espacios
+
+            val passwordPattern = Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$") // Patrón para validar la contraseña
+
+
+
 
             // Verificar si algún campo está vacío y mostrar el mensaje adecuado
             when {
+                !password.matches(passwordPattern) -> {
+                    txtPassword.error = "La contraseña debe contener al menos una letra mayúscula, una letra minúscula y un número"
+                    return@setOnClickListener // Salir si el formato de celular no es válido
+                }
+                !apellido.matches(namePattern) -> {
+                    txtApellido.error = "El apellido no puede contener números ni caracteres especiales"
+                    return@setOnClickListener // Salir si el formato de celular no es válido
+                }
+                !nombre.matches(namePattern) -> {
+                    txtNombre.error = "El nombre no puede contener números ni caracteres especiales"
+                    return@setOnClickListener // Salir si el formato de celular no es válido
+                }
                 nombre.isEmpty() -> {
-                    Snackbar.make(
-                        findViewById(android.R.id.content),
-                        "Por favor ingresa tu nombre",
-                        Snackbar.LENGTH_LONG
-                    ).show()
+                    txtNombre.error = "Por favor ingresa tu nombre"
+                    return@setOnClickListener // Salir si el formato de celular no es válido
                 }
                 !celular.matches(celularPattern) -> {
                     txtCelular.error = "Por favor, ingrese un número de celular válido (9 dígitos)"
                     return@setOnClickListener // Salir si el formato de celular no es válido
                 }
                 apellido.isEmpty() -> {
-                    Snackbar.make(
-                        findViewById(android.R.id.content),
-                        "Por favor ingresa tu apellido",
-                        Snackbar.LENGTH_LONG
-                    ).show()
+                    txtApellido.error = "Por favor ingresa tu apellido"
+                    return@setOnClickListener // Salir si el formato de celular no es válido
                 }
                 email.isEmpty() -> {
-                    Snackbar.make(
-                        findViewById(android.R.id.content),
-                        "Por favor ingresa tu correo",
-                        Snackbar.LENGTH_LONG
-                    ).show()
+                    txtEmail2.error = "Por favor ingresa tu correo"
+                    return@setOnClickListener // Salir si el formato de celular no es válido
                 }
                 celular.isEmpty() -> {
-                    Snackbar.make(
-                        findViewById(android.R.id.content),
-                        "Por favor ingresa tu número de celular",
-                        Snackbar.LENGTH_LONG
-                    ).show()
+                    txtCelular.error = "Por favor ingresa tu número de celular"
+                    return@setOnClickListener // Salir si el formato de celular no es válido
                 }
                 password.isEmpty() -> {
-                    Snackbar.make(
-                        findViewById(android.R.id.content),
-                        "Por favor ingresa una contraseña",
-                        Snackbar.LENGTH_LONG
-                    ).show()
+                    txtPassword.error = "Por favor ingresa una contraseña"
+                    return@setOnClickListener // Salir si el formato de celular no es válido
+
                 }
                 password.length < 6 -> {
-                    Snackbar.make(
-                        findViewById(android.R.id.content),
-                        "La contraseña debe tener al menos 6 caracteres",
-                        Snackbar.LENGTH_LONG
-                    ).show()
+                    txtPassword.error = "La contraseña debe tener al menos 6 caracteres"
+                    return@setOnClickListener // Salir si el formato de celular no es válido
                 }
                 password != passwordConfir -> {
-                    Snackbar.make(
-                        findViewById(android.R.id.content),
-                        "Las contraseñas no coinciden",
-                        Snackbar.LENGTH_LONG
-                    ).show()
+                    txtPassword.error = "Las contraseñas no coinciden"
+                    return@setOnClickListener // Salir si el formato de celular no es válido
 
                 }
                 !checx.isChecked -> {

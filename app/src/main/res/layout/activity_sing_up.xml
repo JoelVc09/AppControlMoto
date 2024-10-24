@@ -63,6 +63,7 @@
             android:background="@drawable/custom_edittext_background"
             android:drawableStart="@drawable/baseline_nombre"
             android:drawablePadding="10dp"
+            android:maxLength="20"
             android:hint="Nombre"
             android:inputType="text" />
 
@@ -73,6 +74,7 @@
             android:layout_marginBottom="8dp"
             android:textColor="@color/black"
             android:textColorHint="@color/hint"
+            android:maxLength="20"
             android:background="@drawable/custom_edittext_background"
             android:drawableStart="@drawable/baseline_nombre"
             android:drawablePadding="10dp"
@@ -103,6 +105,7 @@
             android:drawableStart="@drawable/baseline_celular"
             android:drawablePadding="10dp"
             android:ems="9"
+            android:maxLength="9"
             android:hint="Celular"
             android:inputType="text" />
 
@@ -152,7 +155,7 @@
                 android:id="@+id/tvterminosycondiciones"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
+                android:layout_marginStart="8dp"
                 android:text="@string/vaterminosycondiciones"
                 android:textColor="@color/design_default_color_primary_variant"
                 android:textSize="12sp" />
