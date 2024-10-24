@@ -24,6 +24,8 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
 import android.location.Location
 import android.net.Uri
+import androidx.core.app.ActivityCompat
+import com.google.android.material.snackbar.Snackbar
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -33,6 +35,7 @@ class ubicacion : Fragment() {
     private lateinit var binding: FragmentPanicBinding
     private lateinit var fuseLocationClient: FusedLocationProviderClient
     private lateinit var locationCallback: LocationCallback
+    private val LOCATION_PERMISSION_REQUEST_CODE = 1000
 
     // Manejador para la solicitud de permisos (solo ACCESS_FINE_LOCATION)
     private val requestPermissionLauncher = registerForActivityResult(
@@ -121,18 +124,36 @@ class ubicacion : Fragment() {
     }
 
     private fun enviarUbicacionWhatsApp() {
-        // OBTENER EL NOMBRE DE HOME
-        val sharedPref = activity?.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-        val username = sharedPref?.getString("username", "Usuario Desconocido")
+        // Verificar permisos de ubicación
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            // Obtener la ubicación actual
+            val fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+            fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
+                if (location != null) {
+                    val latitud = location.latitude
+                    val longitud = location.longitude
 
-        val numeroTelefono = "+51969456783"  // Reemplaza con tu número
-        val latitud = binding.tvLatitud.text.toString()
-        val longitud = binding.tvLongitud.text.toString()
-        val mensaje = "Hola mi nombre es $username y siento que estoy en peligro mi ubicación es: Latitud: $latitud, Longitud: $longitud"
-        val url = "https://api.whatsapp.com/send?phone=$numeroTelefono&text=${Uri.encode(mensaje)}"
+                    // Recuperar el nombre de usuario de SharedPreferences
+                    val sharedPref = activity?.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+                    val usuario = sharedPref?.getString("username", "Usuario Desconocido") // Valor por defecto
 
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-        startActivity(intent)
+                    // Crear URL para enviar la ubicación a WhatsApp
+                    val numeroTelefono = "+51969456783"  // Reemplaza con tu número
+                    val mensaje = "Hola mi nombre es $usuario Estoy en peligro, mi ubicación actual es: https://www.google.com/maps?q=$latitud,$longitud"
+                    val url = "https://api.whatsapp.com/send?phone=$numeroTelefono&text=${Uri.encode(mensaje)}"
+
+                    // Iniciar WhatsApp
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                    startActivity(intent)
+                } else {
+                    // Manejar el caso cuando no se puede obtener la ubicación
+                    //Snackbar.make(this, "No se pudo obtener la ubicación actual.", Snackbar.LENGTH_LONG).show()
+                }
+            }
+        } else {
+            // Solicitar permisos de ubicación
+            ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE)
+        }
     }
 
     companion object {

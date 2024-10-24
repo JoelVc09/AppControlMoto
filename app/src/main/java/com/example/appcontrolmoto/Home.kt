@@ -69,6 +69,8 @@ class Home : Fragment() {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
         val emailGuardado = sharedPreferences.getString("email", null)
 
+        Log.d("EmailGuardado", "Email recuperado: $emailGuardado") // Agrega este log
+
         // Encuentra el botón por su ID
 
         val btnAlert: Button = view.findViewById(R.id.btnAlert)
@@ -79,27 +81,31 @@ class Home : Fragment() {
         }
 
         // ASIGNAR EL NOMBRE DEL USUARIO
-        emailGuardado?.let { email -> // Verificar que el correo no sea null
-            // Hacer la consulta en Firestore usando el correo guardado
+        emailGuardado?.let { email ->
             firestore.collection("Usuarios")
-                .whereEqualTo("email", email) // Utiliza el correo guardado en SharedPreferences
-                .get()
+                .get() // O la consulta que estés haciendo
                 .addOnSuccessListener { documents ->
                     for (document in documents) {
-                        val nombre = document.getString("nombre") // Asumiendo que el campo es "nombre"
-                        tvUsuario.text = nombre
+                        val emailDeFirestore = document.getString("email") // Suponiendo que hay un campo "email" en el documento
+                        if (emailGuardado.equals(emailDeFirestore, ignoreCase = true)) {
+                            // Hacer algo si coinciden
+                            val nombre = document.getString("nombre") // Asumiendo que hay un campo "nombre"
+                            tvUsuario.text = nombre // Mostrar el nombre en la vista
 
-                        // Guardar nombre de usuario en SharedPreferences para utilizar en el mensaje
-                        val sharedPref = activity?.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-                        val editor = sharedPref?.edit()
-                        editor?.putString("username", tvUsuario.text.toString())
-                        editor?.apply()
+                            // Guardar nombre de usuario en SharedPreferences para utilizar en el mensaje
+                            val sharedPref = activity?.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+                            val editor = sharedPref?.edit()
+                            editor?.putString("username", nombre)
+                            editor?.apply()
+                        }
                     }
                 }
                 .addOnFailureListener { exception ->
                     // Manejo del error
                     Log.e("FirestoreError", "Error al obtener el documento", exception)
                 }
+        } ?: run {
+            Log.d("SharedPreferences", "No se encontró un correo guardado.")
         }
 
 
