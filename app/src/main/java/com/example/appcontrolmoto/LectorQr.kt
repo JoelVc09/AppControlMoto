@@ -8,6 +8,7 @@ import android.webkit.WebSettings.LayoutAlgorithm
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
@@ -72,27 +73,69 @@ class LectorQr : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-    }
 
-    private fun initViews() {
-        binding.fab.setOnClickListener {
-            checkPermissionCamera(this) // Opción para volver a verificar el permiso al presionar el FAB
-        }
-
-        // Inicia la InformacionConductorActivity al hacer clic en btnPerfil
         binding.btnperfil.setOnClickListener {
-            val placa = binding.textResult.text.toString() // Obtén el valor de la placa del TextView
-
+            val placa = binding.textResult.text.toString()
             if (placa.isNotEmpty()) {
-                // Iniciar la Activity InformacionConductor con el valor de la placa
-                val intent = Intent(this, InformacionConductor::class.java)
-                intent.putExtra("placa_moto", placa) // Pasar el valor de la placa
-                startActivity(intent) // Iniciar la otra Activity
+                verificarPlaca(placa) // Llama a la función para verificar la placa
             } else {
                 Toast.makeText(this, "No hay placa escaneada", Toast.LENGTH_SHORT).show()
             }
         }
     }
+
+    private fun initViews() {
+        // Configura el click listener para el FAB
+        binding.fab.setOnClickListener {
+            checkPermissionCamera(this) // Verifica los permisos de la cámara al presionar el FAB
+        }
+
+        // Configura el click listener para el botón btnperfil
+        binding.btnperfil.setOnClickListener {
+            val placa = binding.textResult.text.toString() // Obtén el valor de la placa del TextView
+
+            if (placa.isNotEmpty()) {
+                verificarPlaca(placa) // Llama a la función para verificar si la placa está registrada en Firestore
+            } else {
+                Toast.makeText(this, "No hay placa escaneada", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun verificarPlaca(placa: String) {
+        val db = FirebaseFirestore.getInstance()
+
+        // Consulta en la colección "Conductores" para ver si existe un documento con el campo "placa" igual a la placa escaneada
+        db.collection("Conductores")
+            .whereEqualTo("placa", placa)
+            .get()
+            .addOnSuccessListener { documents ->
+                if (!documents.isEmpty) {
+                    // Si el documento existe (hay al menos un documento con la placa escaneada)
+                    val intent = Intent(this, InformacionConductor::class.java)
+                    intent.putExtra("placa_moto", placa) // Pasar el valor de la placa
+                    startActivity(intent) // Iniciar la otra Activity
+                } else {
+                    // Si no existe, muestra un diálogo
+                    mostrarDialogPlacaNoRegistrada()
+                }
+            }
+            .addOnFailureListener { exception ->
+                // Manejo de errores en caso de que la consulta falle
+                Toast.makeText(this, "Error al verificar la placa: ${exception.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    // Función para mostrar el diálogo si la placa no está registrada
+    private fun mostrarDialogPlacaNoRegistrada() {
+        AlertDialog.Builder(this)
+            .setTitle("Placa no registrada")
+            .setMessage("Esta placa no está registrada en la base de datos.")
+            .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
+            .show()
+    }
+
+
 
     private fun checkPermissionCamera(context: android.content.Context) {
         if (ContextCompat.checkSelfPermission(context, android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
