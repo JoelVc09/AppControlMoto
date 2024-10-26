@@ -118,11 +118,12 @@
             app:layout_constraintWidth_percent="0.8" />
 
         <Button
+            android:id="@+id/btnPrecausion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:gravity="start|center"
             android:drawableRight="@drawable/tres"
+            android:gravity="start|center"
             android:text="Precaución"
             android:textColor="@color/white"
             android:textSize="20sp"

@@ -11,6 +11,8 @@
     <string name="parraforCuatro">Nuestra aplicación Willariq no utiliza enlaces de terceros, excepto un enlace que redirige a las políticas de privacidad y el uso de la API de WhatsApp para enviar mensajes en situaciones de emergencia. Estos mensajes se envían directamente desde la aplicación a través de WhatsApp para asegurar una comunicación rápida y efectiva, sin almacenar datos innecesarios</string>
     <string name="vaterminosycondiciones">" términos y condiciones * "</string>
     <string name="terminosycondi">Estoy de acuerdo con los</string>
+    <string name="tituloley">LEY QUE PROHIBE LA REALIZACIÓN DE LLAMADAS FALSAS, ABUSIVAS, BROMISTAS, AMENAZANTES, INJURIOSAS O GENERADORAS DE ERROR EN LAS CENTRALES TELEFÓNICAS DE EMERGENCIA Y URGENCIA</string>
+    <string name="ley">Los congresistas que suscriben, a iniciativa del Congresistas Yehude Simon Munaro, en ejecicio de las facultades conferidas en los artículos 107 de la Constitución Política, y de los articulos 22,67,75 y 76 del Reglamento del Congreso de la República, presentan la siguiente iniciativa</string>
     <!-- Strings used for fragments for navigation -->
 
 </resources>

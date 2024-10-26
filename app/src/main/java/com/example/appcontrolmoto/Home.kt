@@ -72,12 +72,18 @@ class Home : Fragment() {
         Log.d("EmailGuardado", "Email recuperado: $emailGuardado") // Agrega este log
 
         // Encuentra el botón por su ID
+        //Configurar boton para precaucion
+        val btnPrecausion: Button = view.findViewById(R.id.btnPrecausion)
 
-        val btnAlert: Button = view.findViewById(R.id.btnAlert)
+        btnPrecausion.setOnClickListener {
+            // Obtén el FragmentManager desde la actividad
+            val fragmentManager = requireActivity().supportFragmentManager
 
-        btnAlert.setOnClickListener {
-            val intent = Intent(requireActivity(), InformacionConductor::class.java)
-            startActivity(intent)
+            // Realiza la transacción para reemplazar el fragmento
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.frame_layout, Precaucion())
+            fragmentTransaction.addToBackStack(null) // Agrega el fragmento a la pila de retroceso
+            fragmentTransaction.commit()
         }
 
         // ASIGNAR EL NOMBRE DEL USUARIO

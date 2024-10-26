@@ -19,7 +19,7 @@ class TerminosCondiciones : AppCompatActivity() {
             insets
         }
 
-        val btnregresar: Button = findViewById(R.id.btnregresar)
+        val btnregresar: Button = findViewById(R.id.btnback)
 
 
         btnregresar.setOnClickListener {

@@ -90,7 +90,7 @@
                 android:textColor="@color/black"
                 android:textSize="17sp" />
             <Button
-                android:id="@+id/btnregresar"
+                android:id="@+id/btnback"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_gradient"
