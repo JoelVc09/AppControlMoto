@@ -1,13 +1,17 @@
 package com.example.appcontrolmoto
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -29,8 +33,60 @@ class InformacionConductor : AppCompatActivity() {
             insets
         }
 
-        val placaMoto = intent.getStringExtra("placa_moto")
+        // Guardar comentarios y calificacion
+
+        // Obtenemos referencias de Firebase y SharedPreferences
+        val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val username = sharedPreferences.getString("username", "") ?: ""
         val db = FirebaseFirestore.getInstance()
+
+        // Referencias a las vistas
+        val ratingBar = findViewById<RatingBar>(R.id.ratingBar)
+        val etComentario = findViewById<EditText>(R.id.et_comentario)
+        val repPlaca = findViewById<TextView>(R.id.repPlaca)
+        val btnGuardarComentario = findViewById<Button>(R.id.btnGuardarComentario)
+
+        btnGuardarComentario.setOnClickListener {
+            val comentario = etComentario.text.toString().trim()
+            val placa = repPlaca.text.toString()
+            val puntuacion = ratingBar.rating
+
+            // Validaciones
+            if (puntuacion == 0f) {
+                Toast.makeText(this, "Por favor, marca una puntuación.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            if (comentario.isEmpty()) {
+                Toast.makeText(this, "Por favor, escribe un comentario.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // Crear el objeto de datos
+            val calificacionData = hashMapOf(
+                "comentario" to comentario,
+                "placa" to placa,
+                "puntuacion" to puntuacion,
+                "usuario" to username
+            )
+
+            // Guardar en Firebase Firestore
+            db.collection("Calificacion")
+                .add(calificacionData)
+                .addOnSuccessListener {
+                    mostrarDialogo("Éxito", "Calificación guardada exitosamente")
+                }
+                .addOnFailureListener { e ->
+                    mostrarDialogo("Error", "Error al guardar: ${e.message}")
+                }
+        }
+
+
+
+
+        // Traer datos del conductor
+        val placaMoto = intent.getStringExtra("placa_moto")
+
 
         db.collection("Conductores")
             .whereEqualTo("placa", placaMoto) // Filtrar por el campo placa
@@ -88,5 +144,24 @@ class InformacionConductor : AppCompatActivity() {
             finish() // Opcional: cerrar la actividad actual
         }
 
+
+
+    }
+
+    // Función para mostrar un diálogo de alerta
+// Función para mostrar un diálogo de alerta
+    private fun mostrarDialogo(titulo: String, mensaje: String) {
+        AlertDialog.Builder(this)
+            .setTitle(titulo)
+            .setMessage(mensaje)
+            .setPositiveButton("OK") { dialog, _ ->
+                dialog.dismiss() // Cerrar el diálogo
+
+                // Redirigir al menú
+                val intent = Intent(this, Menu::class.java)
+                startActivity(intent) // Iniciar la actividad del menú
+                finish() // Cerrar la actividad actual (opcional)
+            }
+            .show()
     }
 }

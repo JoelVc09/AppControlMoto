@@ -9,228 +9,290 @@
     tools:context=".InformacionConductor">
 
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/guideline9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/fondoinformacionconduc" />
-
-    <TextView
-        android:id="@+id/txtName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="JUAN PEREZ CARDOMA LUNA"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline14" />
-
     <LinearLayout
-        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/btnregresarcoduct"
+        android:foregroundGravity="center"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/guideline13"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtName">
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/fotoconduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_nombre" />
+
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:text="JUAN PEREZ CARDOMA LUNA"
+            android:textColor="@color/title"
+            android:textSize="24sp"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="15dp"
+            android:text="Dato Vehicular "
+            android:textColor="@color/title"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
 
         <LinearLayout
-            android:layout_width="216dp"
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal|left"
-            android:orientation="vertical">
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
 
-            <!-- Nombre -->
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="216dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:drawableStart="@drawable/info_24"
-                android:drawablePadding="10dp"
-                android:gravity="center_vertical"
-                android:padding="8dp"
-                android:text="Placa :"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:gravity="center_horizontal|left"
+                android:orientation="vertical">
 
-            <!-- Dirección -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:drawableStart="@drawable/info_24"
-                android:drawablePadding="10dp"
-                android:gravity="center_vertical"
-                android:padding="8dp"
-                android:text="Estado :"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                <!-- Nombre -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:drawableStart="@drawable/info_24"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="Placa :"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-            <!-- Teléfono -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:drawableStart="@drawable/info_24"
-                android:drawablePadding="10dp"
-                android:gravity="center_vertical"
-                android:padding="8dp"
-                android:text="Licencia :"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                <!-- Dirección -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:drawableStart="@drawable/info_24"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="Estado :"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-            <!-- Correo electrónico -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:drawableStart="@drawable/info_24"
-                android:drawablePadding="10dp"
-                android:gravity="center_vertical"
-                android:padding="8dp"
-                android:text="Color vehicular :"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                <!-- Teléfono -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:drawableStart="@drawable/info_24"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="Licencia :"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-            <!-- Fecha de nacimiento -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:drawableStart="@drawable/info_24"
-                android:drawablePadding="10dp"
-                android:gravity="center_vertical"
-                android:padding="8dp"
-                android:text="Soat :"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                <!-- Correo electrónico -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:drawableStart="@drawable/info_24"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="Color vehicular :"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <!-- Fecha de nacimiento -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:drawableStart="@drawable/info_24"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="Soat :"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal|left"
+                android:orientation="vertical">
+
+
+                <!-- Nombre -->
+                <TextView
+                    android:id="@+id/repPlaca"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="Placa"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <!-- Dirección -->
+                <TextView
+                    android:id="@+id/repEsta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:text="Estado"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <!-- Teléfono -->
+                <TextView
+                    android:id="@+id/repLicen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:padding="8.5dp"
+                    android:text="Licencia"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <!-- Correo electrónico -->
+                <TextView
+                    android:id="@+id/repColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:padding="9dp"
+                    android:text="Color"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <!-- Fecha de nacimiento -->
+                <TextView
+                    android:id="@+id/repSoat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:padding="9dp"
+                    android:text="Soat"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
 
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/title"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:text="Califica y deja comentario"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+            android:progressBackgroundTint="@color/hint"
+            android:progressTint="@color/yellow"
+            android:numStars="5"
+            android:rating="0" />
+
+        <EditText
+            android:id="@+id/et_comentario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Escribe tu comentario"
+            android:textColorHint="@color/hint"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:inputType="textMultiLine"
+            android:maxLength="600"
+            android:maxLines="5" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center_horizontal|left"
-            android:orientation="vertical">
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:orientation="horizontal">
 
+            <Button
+                android:id="@+id/btnGuardarComentario"
+                android:layout_width="180dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/button_gradient"
+                android:layout_marginEnd="10dp"
+                android:text="Enviar"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
 
-            <!-- Nombre -->
-            <TextView
-                android:id="@+id/repPlaca"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/btnregresarcoduct"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:drawablePadding="10dp"
-                android:gravity="center_vertical"
-                android:padding="8dp"
-                android:text="Placa"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:layout_marginStart="10dp"
+                android:background="@drawable/button_gradient"
+                android:text="Volver"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
 
-            <!-- Dirección -->
-            <TextView
-                android:id="@+id/repEsta"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:drawablePadding="10dp"
-                android:gravity="center_vertical"
-                android:padding="10dp"
-                android:text="Estado"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <!-- Teléfono -->
-            <TextView
-                android:id="@+id/repLicen"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:drawablePadding="10dp"
-                android:gravity="center_vertical"
-                android:padding="8.5dp"
-                android:text="Licencia"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <!-- Correo electrónico -->
-            <TextView
-                android:id="@+id/repColor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:drawablePadding="10dp"
-                android:gravity="center_vertical"
-                android:padding="9dp"
-                android:text="Rojo"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <!-- Fecha de nacimiento -->
-            <TextView
-                android:id="@+id/repSoat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:drawablePadding="10dp"
-                android:gravity="center_vertical"
-                android:padding="9dp"
-                android:text="Soat"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-        </LinearLayout>
-
+        </LinearLayout> <!-- Calculando aprox. 6 caracteres por palabra -->
 
     </LinearLayout>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.150" />
+        app:layout_constraintGuide_end="621dp" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.300" />
-
-    <Button
-        android:id="@+id/btnregresarcoduct"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Volver"
-        android:textSize="18dp"
-        android:textColor="@color/white"
-        android:background="@drawable/button_gradient"
-        app:layout_constraintBottom_toTopOf="@+id/guideline13"
-        app:layout_constraintEnd_toStartOf="@+id/guideline18"
-        app:layout_constraintStart_toStartOf="@+id/guideline17" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline13"
@@ -239,15 +301,6 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.98" />
 
-    <ImageView
-        android:id="@+id/fotoconduct"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline14"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline12"
-        app:srcCompat="@drawable/www" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline17"
@@ -262,18 +315,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.95" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Dato Vehicular "
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

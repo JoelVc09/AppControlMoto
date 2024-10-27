@@ -21,6 +21,7 @@ import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanIntentResult
 import com.journeyapps.barcodescanner.ScanOptions
 
+
 class LectorQr : AppCompatActivity() {
 
     private val requestPermissionLauncher =
@@ -112,9 +113,18 @@ class LectorQr : AppCompatActivity() {
             .addOnSuccessListener { documents ->
                 if (!documents.isEmpty) {
                     // Si el documento existe (hay al menos un documento con la placa escaneada)
+
+                    // Guardar la placa en SharedPreferences
+                    val sharedPref = getSharedPreferences("MyPrefs", android.content.Context.MODE_PRIVATE)
+                    val editor = sharedPref.edit()
+                    editor.putString("placa_guardada", placa) // Guardar la placa con la clave "placa_guardada"
+                    editor.apply() // Aplicar los cambios
+
+                    // Iniciar la actividad InformacionConductor
                     val intent = Intent(this, InformacionConductor::class.java)
                     intent.putExtra("placa_moto", placa) // Pasar el valor de la placa
                     startActivity(intent) // Iniciar la otra Activity
+
                 } else {
                     // Si no existe, muestra un diálogo
                     mostrarDialogPlacaNoRegistrada()

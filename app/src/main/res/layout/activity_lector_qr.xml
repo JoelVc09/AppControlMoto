@@ -58,6 +58,7 @@
         android:contentDescription="KlotinQRCodeSCanner"
         android:src="@drawable/baseline_qr"
         android:tintMode="multiply"
+        android:backgroundTint="@color/white"
         app:layout_anchor="@id/bottomApp"
         app:tint="@color/white" />
 

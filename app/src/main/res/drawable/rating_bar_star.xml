@@ -1,0 +1,8 @@
+<!-- res/drawable/rating_bar_star.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <!-- Color de la estrella cuando está seleccionada -->
+    <item android:id="@android:id/progress"
+        android:drawable="@color/yellow" /> <!-- Cambia colorAmarillo al color deseado -->
+</layer-list>
