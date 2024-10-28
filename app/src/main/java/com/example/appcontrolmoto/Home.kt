@@ -55,6 +55,8 @@ class Home : Fragment() {
         // Configurar el botón para navegar a LectorQr
         val btnScanner: Button = view.findViewById(R.id.btnScaner)
 
+        val btnIncidencias: Button = view.findViewById(R.id.btnIncidencias)
+
         // Agregar el log para verificar si el botón es null
         Log.d("HomeFragment", "Button is null: ${btnScanner == null}")
 
@@ -121,9 +123,34 @@ class Home : Fragment() {
             startActivity(intent)
         }
 
+
+        btnIncidencias.setOnClickListener {
+            // Obtén una instancia de SharedPreferences
+            val sharedPref = requireContext().getSharedPreferences("MyPrefs", android.content.Context.MODE_PRIVATE)
+
+            // Recupera el valor de "placa_guardada"
+            val placaMoto = sharedPref.getString("placa_guardada", null) // Segundo parámetro es el valor por defecto
+
+            if (placaMoto.isNullOrEmpty()) {
+                // Si placa_guardada está vacía, muestra un diálogo de alerta
+                AlertDialog.Builder(requireContext())
+                    .setTitle("Información")
+                    .setMessage("Tiene que escanear el QR")
+                    .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
+                    .show()
+            } else {
+                // Si tiene valor, reemplaza el fragmento
+                val fragmentManager = requireActivity().supportFragmentManager
+                val fragmentTransaction = fragmentManager.beginTransaction()
+                fragmentTransaction.replace(R.id.frame_layout, Incidencias())
+                fragmentTransaction.addToBackStack(null) // Agrega el fragmento a la pila de retroceso
+                fragmentTransaction.commit()
+            }
+        }
+
         val btnLogout: Button = view.findViewById(R.id.btnLogout)
 
-// Acción para el botón de cerrar sesión
+        // Acción para el botón de cerrar sesión
         btnLogout.setOnClickListener {
             // Crear un diálogo de confirmación
             AlertDialog.Builder(requireContext())

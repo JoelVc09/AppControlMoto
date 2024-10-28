@@ -126,6 +126,17 @@ class LectorQr : AppCompatActivity() {
                     startActivity(intent) // Iniciar la otra Activity
 
                 } else {
+                    // Obtén una instancia de SharedPreferences
+                    val sharedPref = getSharedPreferences("MyPrefs", android.content.Context.MODE_PRIVATE)
+
+                    // Abre el editor para realizar cambios
+                    val editor = sharedPref.edit()
+
+                    // Elimina el valor almacenado con la clave "placa_guardada"
+                    editor.remove("placa_guardada")
+
+                    // Aplica los cambios
+                    editor.apply()
                     // Si no existe, muestra un diálogo
                     mostrarDialogPlacaNoRegistrada()
                 }
@@ -136,12 +147,19 @@ class LectorQr : AppCompatActivity() {
             }
     }
 
-    // Función para mostrar el diálogo si la placa no está registrada
+
     private fun mostrarDialogPlacaNoRegistrada() {
         AlertDialog.Builder(this)
             .setTitle("Placa no registrada")
             .setMessage("Esta placa no está registrada en la base de datos.")
-            .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
+            .setPositiveButton("OK") { dialog, _ ->
+                dialog.dismiss() // Cerrar el diálogo
+
+                // Redirigir al menú
+                val intent = Intent(this, Menu::class.java)
+                startActivity(intent) // Iniciar la actividad del menú
+                finish() // Cerrar la actividad actual (opcional)
+            }
             .show()
     }
 

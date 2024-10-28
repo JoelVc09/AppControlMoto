@@ -13,12 +13,16 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class InformacionConductor : AppCompatActivity() {
 
@@ -62,12 +66,17 @@ class InformacionConductor : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            // Obtener la fecha actual en el formato "dd/MM/yyyy"
+            val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+            val currentDate = dateFormat.format(Date())
+
             // Crear el objeto de datos
             val calificacionData = hashMapOf(
                 "comentario" to comentario,
                 "placa" to placa,
                 "puntuacion" to puntuacion,
-                "usuario" to username
+                "usuario" to username,
+                "fecha" to currentDate // Agregar la fecha actual en formato deseado
             )
 
             // Guardar en Firebase Firestore
@@ -85,7 +94,14 @@ class InformacionConductor : AppCompatActivity() {
 
 
         // Traer datos del conductor
-        val placaMoto = intent.getStringExtra("placa_moto")
+        //val placaMoto = intent.getStringExtra("placa_moto")
+
+        // Obtén una instancia de SharedPreferences con el mismo nombre utilizado para guardar el dato
+        val sharedPref = getSharedPreferences("MyPrefs", android.content.Context.MODE_PRIVATE)
+
+        // Recupera el valor de "placa_guardada"
+        val placaMoto = sharedPref.getString("placa_guardada", null) // Segundo parámetro es el valor por defecto
+
 
 
         db.collection("Conductores")
