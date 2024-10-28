@@ -77,6 +77,8 @@ class Home : Fragment() {
         //Configurar boton para precaucion
         val btnPrecausion: Button = view.findViewById(R.id.btnPrecausion)
 
+        val btnAlertaPeligro: Button = view.findViewById(R.id.btnAlert)
+
         btnPrecausion.setOnClickListener {
             // Obtén el FragmentManager desde la actividad
             val fragmentManager = requireActivity().supportFragmentManager
@@ -121,6 +123,14 @@ class Home : Fragment() {
         btnScanner.setOnClickListener {
             val intent = Intent(requireActivity(), LectorQr::class.java)
             startActivity(intent)
+        }
+
+        btnAlertaPeligro.setOnClickListener {
+            val fragmentManager = requireActivity().supportFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.frame_layout, AlertaPeligro())
+            fragmentTransaction.addToBackStack(null) // Agrega el fragmento a la pila de retroceso
+            fragmentTransaction.commit()
         }
 
 

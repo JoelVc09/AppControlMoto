@@ -45,6 +45,7 @@
                 android:id="@+id/tvUsuario"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:text="Usuario"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="20sp" />

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -60,6 +61,23 @@ class Incidencias : Fragment() {
                             document.getString("fecha").orEmpty()
                         )
                     }
+
+                    // Calcular el promedio de la puntuación
+                    val puntuaciones = snapshot.documents.mapNotNull { document ->
+                        document.getDouble("puntuacion") // Obtener la puntuación de cada documento
+                    }
+                    val promedio = if (puntuaciones.isNotEmpty()) {
+                        puntuaciones.average() // Calcular el promedio de puntuaciones
+                    } else {
+                        0.0 // Si no hay puntuaciones, el promedio es 0
+                    }
+
+                    // Formato del promedio en "ELPROMEDIO/5"
+                    val promedioTexto = String.format("%.1f/5", promedio)
+
+                    // Actualizar el TextView y el RatingBar
+                    view?.findViewById<TextView>(R.id.tvPuntos)?.text = promedioTexto // Mostrar el promedio en tvPuntos
+                    view?.findViewById<RatingBar>(R.id.ratingBar)?.rating = promedio.toFloat() // Asignar el promedio a ratingBar
 
                     // Configurar el RecyclerView con el AdapterComent y el LinearLayoutManager
                     rvComents.adapter = AdapterComent(lstComentarios)

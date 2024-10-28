@@ -22,8 +22,8 @@
 
         <ImageView
             android:id="@+id/fotoconduct"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_marginTop="15dp"
             android:layout_gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
@@ -242,6 +242,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
+                android:isIndicator="true"
                 android:layout_marginEnd="15dp"
                 android:numStars="5"
                 android:progressBackgroundTint="@color/hint"
@@ -249,7 +250,7 @@
                 android:rating="0" />
 
             <TextView
-                android:id="@+id/txtPuntos"
+                android:id="@+id/tvPuntos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
