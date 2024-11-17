@@ -29,22 +29,12 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="70"
-            android:gravity="left|center_vertical"
+            android:gravity="center_vertical"
             android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Bienvenido"
-                android:textAlignment="center"
-                android:textColor="#000000"
-                android:textSize="19sp"
-                android:textStyle="bold" />
-
             <TextView
                 android:id="@+id/tvUsuario"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="Usuario"
                 android:textAlignment="center"
                 android:textColor="@color/black"

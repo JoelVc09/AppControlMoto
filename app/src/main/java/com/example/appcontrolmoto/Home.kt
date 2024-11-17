@@ -99,8 +99,8 @@ class Home : Fragment() {
                         val emailDeFirestore = document.getString("email") // Suponiendo que hay un campo "email" en el documento
                         if (emailGuardado.equals(emailDeFirestore, ignoreCase = true)) {
                             // Hacer algo si coinciden
-                            val nombre = document.getString("nombre") // Asumiendo que hay un campo "nombre"
-                            tvUsuario.text = nombre // Mostrar el nombre en la vista
+                            val nombre = document.getString("nombre")?.replaceFirstChar { it.uppercase() } ?: "Usuario" // Asumiendo que hay un campo "nombre"
+                            tvUsuario.text = "Bienvenido, $nombre"// Mostrar el nombre en la vista
 
                             // Guardar nombre de usuario en SharedPreferences para utilizar en el mensaje
                             val sharedPref = activity?.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
