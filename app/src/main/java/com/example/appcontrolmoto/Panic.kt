@@ -1,5 +1,6 @@
 package com.example.appcontrolmoto
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -37,24 +38,51 @@ class Panic : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        // Inflate the layout for this fragment
+        // Inflar el diseño del fragmento
         val view = inflater.inflate(R.layout.fragment_panic2, container, false)
 
-        // Realizar la llamada automáticamente al ingresar al fragmento
-        val phoneNumber = "969456783" // Número de teléfono
-        val intent = Intent(Intent.ACTION_DIAL).apply {
-            data = Uri.parse("tel:$phoneNumber")
-        }
-        startActivity(intent)
+        // Definir los números
+        val numeroPrincipal = "978478836"  // Número principal
+        val numeroAlternativo = "917969460" // Número alternativo
 
-        // Cerrar la aplicación después de un retraso
-        val handler = Handler(Looper.getMainLooper())
-        handler.postDelayed({
-            requireActivity().finishAffinity() // Cierra todas las actividades
-        }, 1000) // Retraso de 5 segundos (ajusta según sea necesario)
+        // Mostrar el cuadro de diálogo al ingresar al fragmento
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Seleccionar número para llamar")
+        builder.setMessage("¿A qué número deseas realizar la llamada?")
+
+        // Opción para el número principal
+        builder.setPositiveButton("Llamar al número principal") { _, _ ->
+            val intent = Intent(Intent.ACTION_DIAL).apply {
+                data = Uri.parse("tel:$numeroPrincipal")
+            }
+            startActivity(intent)
+
+            cerrarAplicacionConRetraso()
+        }
+
+        // Opción para el número alternativo
+        builder.setNegativeButton("Llamar al número alternativo") { _, _ ->
+            val intent = Intent(Intent.ACTION_DIAL).apply {
+                data = Uri.parse("tel:$numeroAlternativo")
+            }
+            startActivity(intent)
+
+            cerrarAplicacionConRetraso()
+        }
+
+        // Mostrar el cuadro de diálogo
+        builder.setCancelable(false) // Para forzar la selección de un número
+        builder.show()
 
         return view
+    }
+
+    // Método auxiliar para cerrar la aplicación después de un retraso
+    private fun cerrarAplicacionConRetraso() {
+        val handler = Handler(Looper.getMainLooper())
+        handler.postDelayed({
+            requireActivity().finishAffinity() // Cierra todas las actividades de la aplicación
+        }, 1000) // Retraso de 1 segundo
     }
 
 

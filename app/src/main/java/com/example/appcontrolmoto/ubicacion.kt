@@ -138,7 +138,7 @@ class ubicacion : Fragment() {
                     val usuario = sharedPref?.getString("username", "Usuario Desconocido") // Valor por defecto
 
                     // Crear URL para enviar la ubicación a WhatsApp
-                    val numeroTelefono = "+51969456783"  // Reemplaza con tu número
+                    val numeroTelefono = "+51917969460"  // Reemplaza con tu número
                     val mensaje = "Hola mi nombre es $usuario Estoy en peligro, mi ubicación actual es: https://www.google.com/maps?q=$latitud,$longitud"
                     val url = "https://api.whatsapp.com/send?phone=$numeroTelefono&text=${Uri.encode(mensaje)}"
 

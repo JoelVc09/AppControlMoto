@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,21 +50,35 @@ class AlertaPeligro : Fragment() {
 
         // Configura el OnClickListener para el botón
         btnLLamada.setOnClickListener {
-            // Número de teléfono que deseas marcar
-            val phoneNumber = "969456783"
+            // Definir los números
+            val numeroOriginal = "978478836"
+            val numeroReemplazo = "917969460"
 
-            // Intent para iniciar la llamada
-            val intent = Intent(Intent.ACTION_DIAL).apply {
-                data = Uri.parse("tel:$phoneNumber")
+            // Crear el diálogo
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setTitle("Seleccionar número para llamar")
+            builder.setMessage("¿A qué número deseas realizar la llamada?")
+
+            // Opción para el número original
+            builder.setPositiveButton("Llamar al Número principal") { _, _ ->
+                val intent = Intent(Intent.ACTION_DIAL).apply {
+                    data = Uri.parse("tel:$numeroOriginal")
+                }
+                startActivity(intent)
             }
-            startActivity(intent) // Inicia la actividad de llamada
 
-            // Configura un retraso de 1 segundo para cerrar la aplicación después de realizar la llamada
-            val handler = Handler(Looper.getMainLooper())
-            handler.postDelayed({
-                requireActivity().finishAffinity() // Cierra todas las actividades de la aplicación
-            }, 1000) // Retraso de 1 segundo
+            // Opción para el número de reemplazo
+            builder.setNegativeButton("Llamar al Número alternativo") { _, _ ->
+                val intent = Intent(Intent.ACTION_DIAL).apply {
+                    data = Uri.parse("tel:$numeroReemplazo")
+                }
+                startActivity(intent)
+            }
+
+            // Mostrar el diálogo
+            builder.show()
         }
+
 
         val btnEnviarMensaje = view.findViewById<Button>(R.id.btnEnviarMensaje)
         btnEnviarMensaje.setOnClickListener {
@@ -105,7 +120,7 @@ class AlertaPeligro : Fragment() {
             val usuario = sharedPref.getString("username", "Usuario Desconocido") // Valor por defecto
 
             // Crear URL para enviar el mensaje a WhatsApp
-            val numeroTelefono = "+51969456783" // Reemplaza con tu número
+            val numeroTelefono = "+51917969460" // Reemplaza con tu número
             val url = "https://api.whatsapp.com/send?phone=$numeroTelefono&text=${Uri.encode("$mensaje\n\nEnviado por: $usuario")}"
 
             // Iniciar WhatsApp
